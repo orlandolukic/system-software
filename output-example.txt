@@ -1,0 +1,53 @@
+# Symbol Table
+# Access rights: [R-read, W-write, X-execute]
+# 
+# id	name		sec	val	vis	is_sec	RWX
+  0	UND		UND	0	local	0	---
+  1	.data		data	0	local	1	RW-
+  2	tmp		data	4	local	0	---
+  3	g		data	17	global	0	---
+  4	arr		data	17	local	0	---
+  5	msk		data	39	local	0	---
+  6	a		data	6	local	0	---
+  7	luka		luka	0	local	1	RW-
+  8	r		luka	0	local	0	---
+  9	mask		luka	8	local	0	---
+  10	.text		text	0	local	1	R-X
+  11	main		text	0	global	0	---
+  12	sum		UND	0	global	0	---
+  13	printf		UND	0	global	0	---
+
+# .section data
+# 43bytes
+00 00 00 00 7B 00 00 00 00 00 00 00 00 00 00 00 
+00 E6 00 04 00 81 FF 03 00 04 00 05 00 06 00 07 
+00 08 00 09 00 11 00 25 64 61 00 
+
+# .rel.data
+# offset	type	val	sym/sec
+  0x0013(19)	R_16	1	section
+  0x0025(37)	R_16	3	symbol
+
+
+# .section luka
+# 12bytes
+0A 00 0C 00 0E 00 10 00 25 64 0A 00 
+
+# .rel.luka
+# offset	type	val	sym/sec
+# Relocation table empty.
+
+
+# .section text
+# 43bytes
+24 2A 2C 8C 00 17 00 8C A0 11 00 BC A0 00 00 2C 
+2C 00 04 00 8C 20 8C A0 27 00 BC A0 00 00 2C 2C 
+00 04 00 24 20 00 00 00 94 2A C4 
+
+# .rel.text
+# offset	type	val	sym/sec
+  0x0009(9)	R_16	1	section
+  0x000D(13)	R_16	12	symbol
+  0x0018(24)	R_16	1	section
+  0x001C(28)	R_16	13	symbol
+

@@ -1,0 +1,42 @@
+# Function sum!
+# r5 is base pointer.
+
+.global sum
+
+.text
+sum:
+	push r5
+	mov r5, sp
+	sub sp, 2	
+
+	mov r0, sp[6]			# r0 = n;
+	mov r1, sp[4]			# r1 = &arr[0];
+	xor r2, r2			# int i = 0; r2 = 0;
+	mov r5[-2], 0			# suma = 0;
+
+	cmp r0, 0
+	jgt forloop
+	mov r0, -1
+	add sp, 2
+	pop r5
+	ret
+
+forloop:
+		
+	mov r3, r5[-2]
+	shl r2, 1			# i = i << 1;
+	mov r4, r1
+	add r4, r2			# r4 = arr+i*2;
+	shr r2, 1
+	add r3, [r4]			# r3 = suma + *(arr+i*2);
+
+	add r2, 1			# i++;
+	cmp r2, r0			# if ( i == n )
+	jeq efl				# 	break;
+
+efl:
+endfunc:
+	mov r0, r5[-2]
+	add sp, 2
+	pop r5
+	ret

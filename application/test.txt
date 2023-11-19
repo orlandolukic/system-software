@@ -1,0 +1,39 @@
+# Main function
+
+.extern sum, printf       
+.global main,g
+
+# Data section of this .s file.
+.data
+	.skip 4
+	tmp:	.byte 123
+.skip 12
+g:
+	arr: 	.word 230 ,tmp, -127,3, 4,5, 6,7,8,9,g
+	msk: 	.asciz "%da"
+	.equ a, 2+tmp
+
+.section luka, "RW-"
+	r:    .word 10, 12, 14,   16
+	mask: .asciz "%d\n"
+
+# Text section of this .s file.
+.text
+# Main function, fires on program start.
+main:
+	mov r5, sp			# mov bp.
+
+	# Sum elements of the array!
+	push 23
+	push arr
+	call sum			# call sum program.
+	add sp, 4
+
+	push r0					
+	push msk
+	call printf
+	add sp, 4
+
+	mov r0, 0			# return 0;
+	pop r5
+	ret

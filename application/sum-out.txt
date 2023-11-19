@@ -1,0 +1,26 @@
+# Symbol Table
+# Access rights: [R-read, W-write, X-execute]
+# 
+# id	name		sec	val	vis	is_sec	RWX
+  0	UND		UND	0	local	0	---
+  1	.text		text	0	local	1	R-X
+  2	sum		text	0	global	0	---
+  3	forloop		text	49	local	0	---
+  4	efl		text	84	local	0	---
+  5	endfunc		text	84	local	0	---
+
+# .section text
+# 96bytes
+8C 2A 24 2A 2C 34 2C 00 02 00 24 20 6C 06 24 22 
+6C 04 6C 24 24 24 6A FE 00 00 00 4C 20 00 00 00 
+B4 A0 31 00 24 20 00 FF FF 2C 2C 00 02 00 94 2A 
+C4 24 26 6A FE 7C 24 00 01 00 24 28 22 2C 28 24 
+84 24 00 01 00 2C 26 48 2C 24 00 01 00 4C 24 20 
+A4 A0 54 00 24 20 6A FE 2C 2C 00 02 00 94 2A C4 
+
+
+# .rel.text
+# offset	type	val	sym/sec
+  0x0022(34)	R_16	1	section
+  0x0052(82)	R_16	1	section
+
